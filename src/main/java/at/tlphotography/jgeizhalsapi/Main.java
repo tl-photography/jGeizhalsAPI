@@ -14,21 +14,17 @@ public class Main {
 	/**
 	 * The main method.
 	 *
-	 * @param args
-	 *            the arguments
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
+	 * @param args the arguments
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException
 	 * @throws ParseException
 	 */
 	public static void main(String[] args) throws IOException, InterruptedException, ParseException {
 
+		// set proxy if needed
 		System.setProperty("http.proxyHost", "127.0.0.1");
 		System.setProperty("http.proxyPort", "3128");
-
 		Runner runner = new Runner();
 		runner.run();
-
 	}
-
 }

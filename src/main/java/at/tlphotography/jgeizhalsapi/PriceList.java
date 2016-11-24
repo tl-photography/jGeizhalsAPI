@@ -22,16 +22,12 @@ public class PriceList {
 	/**
 	 * Instantiates a new price list.
 	 *
-	 * @param string
-	 *            the string
-	 * @param group
-	 *            the group
-	 * @param group2
-	 *            the group 2
-	 * @throws MalformedURLException
-	 *             the malformed URL exception
+	 * @param string the string
+	 * @param group the group
+	 * @param group2 the group 2
+	 * @throws MalformedURLException the malformed URL exception
 	 */
-	public PriceList(String string, String group, String group2) throws MalformedURLException {
+	public PriceList(String string, String group, String group2) {
 		price = Float.parseFloat(group.replace(',', '.').replace('-', '0'));
 		url = group2;
 		setName(string);
@@ -49,8 +45,7 @@ public class PriceList {
 	/**
 	 * Sets the price.
 	 *
-	 * @param price
-	 *            the new price
+	 * @param price the new price
 	 */
 	public void setPrice(float price) {
 		this.price = price;
@@ -68,8 +63,7 @@ public class PriceList {
 	/**
 	 * Sets the url.
 	 *
-	 * @param url
-	 *            the new url
+	 * @param url the new url
 	 */
 	public void setUrl(String url) {
 		this.url = url;
@@ -87,8 +81,7 @@ public class PriceList {
 	/**
 	 * Sets the name.
 	 *
-	 * @param name
-	 *            the new name
+	 * @param name the new name
 	 */
 	public void setName(String name) {
 		this.name = name;

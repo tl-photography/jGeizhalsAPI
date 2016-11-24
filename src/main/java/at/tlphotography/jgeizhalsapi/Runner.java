@@ -3,14 +3,8 @@
  */
 package at.tlphotography.jgeizhalsapi;
 
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
 
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVRecord;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -25,35 +19,27 @@ public class Runner {
 	/**
 	 * Run.
 	 *
-	 * @throws IOException
-	 *             Signals that an I/O exception has occurred.
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 * @throws InterruptedException
 	 */
-	public void run() throws IOException, InterruptedException {
+	public void run() {
 
-		ArrayList<PriceList> list = new ArrayList<>();
+		try {
+			// search in a category and return the 5 best matches
+			GeizhalsApi.getPriceFromCategorie("Tiltall BH-07", Categories.VIDEOFOTOTV, 5).forEach(LOGGER::info);
+			
+			// search in a category and return the perfect match (case insensitive)
+			GeizhalsApi.getPriceFromCategorie("Tiltall BH-07", Categories.VIDEOFOTOTV).forEach(LOGGER::info);
+			
+			// search and return the 5 best matches
+			GeizhalsApi.getPrice("Tiltall BH-07", 5).forEach(LOGGER::info);
+			
+			// search and return the perfect match (case insensitive)
+			GeizhalsApi.getPrice("Tiltall BH-07").forEach(LOGGER::info);
 
-		Reader in = new FileReader("./test/test.csv");
-		Iterable<CSVRecord> records = CSVFormat.newFormat(';').parse(in);
-		for (CSVRecord record : records) {
-			LOGGER.info("Record :" + record.get(0));
-
-			list.addAll(GeizhalsApi.getPrice(record.get(0)));
-
+		} catch (GeizhalsApiException e) {
+			LOGGER.error("someting went wrong", e);
 		}
-
-		in.close();
-
-		FileWriter fileWriter = new FileWriter("./test/test2.csv");
-
-		for (PriceList csvRecord : list) {
-			fileWriter.write(csvRecord + "\n");
-		}
-
-		fileWriter.flush();
-		fileWriter.close();
-
-		return;
 
 	}
 
