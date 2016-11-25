@@ -3,29 +3,22 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>jGeizhalsAPI</artifactId>
 	<version>1.0.0</version>
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
+	<groupId>at.tlphotography.jgeizhalsapi</groupId>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.0.2</version>
-				<configuration>
-					<includes>
-						<include>**/example/*</include>
-					</includes>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+	<name>jGeizhalsAPI</name>
+	<description>A API for the price comparison website Geizhals.at</description>
+	<url>https://github.com/Herschdorfer/jGeizhalsAPI</url>
+
+	<scm>
+		<url>https://github.com/Herschdorfer/jGeizhalsAPI</url>
+	</scm>
+
+	<properties>
+		<log4j.version>1.2.17</log4j.version>
+		<jsoup.version>1.9.2</jsoup.version>
+		<commons.lang.version>3.5</commons.lang.version>
+	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -43,11 +36,27 @@
 			<version>${jsoup.version}</version>
 		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
 
-	<groupId>at.tlphotography.jgeizhalsapi</groupId>
-	<properties>
-		<log4j.version>1.2.17</log4j.version>
-		<jsoup.version>1.9.2</jsoup.version>
-		<commons.lang.version>3.5</commons.lang.version>
-	</properties>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.0.2</version>
+				<configuration>
+					<excludes>
+						<exclude>**/example/</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
