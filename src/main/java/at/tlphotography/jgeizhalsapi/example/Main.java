@@ -1,7 +1,7 @@
 /*
  * @author Thomas Leber
  */
-package at.tlphotography.jgeizhalsapi;
+package at.tlphotography.jgeizhalsapi.example;
 
 import java.io.IOException;
 import java.text.ParseException;
